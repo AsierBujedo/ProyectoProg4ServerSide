@@ -33,30 +33,20 @@ void manageProdMenu() {
 
 	switch (opt) {
 	case 1:
-		logFile(INFO, "Opción 1 de manageProdMenu seleccionada (addProduct)");
-		addProduct();
-		logFile(INFO, "manageProdMenu<<");
-		manageProdMenu();
+
 		break;
 
 	case 2:
-		logFile(INFO, "Opción 2 de manageProdMenu seleccionada (deleteProduct)");
-		deleteProduct();
-		logFile(INFO, "manageProdMenu<<");
-		manageProdMenu();
+
 		break;
 
 	case 3:
-		logFile(INFO, "Opción 3 de manageProdMenu seleccionada (updateProduct)");
-		updateProduct();
-		logFile(INFO, "manageProdMenu<<");
+
 		manageProdMenu();
 		break;
 
 	case 4:
-		logFile(INFO, "Opción 4 de manageProdMenu seleccionada (updateBDMenu<<)");
-		updateBDMenu();
-		logFile(INFO, "manageProdMenu<<");
+
 		manageProdMenu();
 		break;
 	}
@@ -82,29 +72,22 @@ void manageSuperMenu() {
 
 	switch (opt) {
 	case 1:
-		logFile(INFO, "Opción 1 de manageSuperMenu seleccionada (addSupermarket)");
-		addSupermarket();
-		logFile(INFO, "manageSuperMenu<<");
+
 		manageSuperMenu();
 		break;
 
 	case 2:
-		logFile(INFO, "Opción 2 de manageSuperMenu seleccionada (deleteSupermarket)");
-		deleteSupermarket();
-		logFile(INFO, "manageSuperMenu<<");
+
 		manageSuperMenu();
 		break;
 
 	case 3:
-		logFile(INFO, "Opción 3 de manageSuperMenu seleccionada (updateSupermarket())");
-		updateSupermarket();
-		logFile(INFO, "manageSuperMenu<<");
+
 		manageSuperMenu();
 		break;
 
 	case 4:
-		logFile(INFO, "Opción 4 de manageSuperMenu seleccionada (updateBDMenu<<)");
-		updateBDMenu();
+
 		break;
 	}
 }
@@ -128,18 +111,15 @@ void updateBDMenu() {
 
 	switch (opt) {
 	case 1:
-		logFile(INFO, "Opción 1 de updateBDMenu seleccionada (>>manageSuperMenu)");
-		manageSuperMenu();
+
 		break;
 
 	case 2:
-		logFile(INFO, "Opción 2 de updateBDMenu seleccionada (>>manageProdMenu)");
-		manageProdMenu();
+
 		break;
 
 	case 3:
-		logFile(INFO, "Opción 3 de updateBDMenu seleccionada (adminMenu<<)");
-		adminMenu();
+
 		break;
 	}
 }
@@ -163,22 +143,15 @@ void queryBDMenu() {
 
 	switch (opt) {
 	case 1:
-		logFile(INFO, "Opción 1 de queryBDMenu seleccionada (showSupermarkets)");
-		showSupermarkets(true);
-		logFile(INFO, "mainMenu<<");
-		mainMenu(true);
+
 		break;
 
 	case 2:
-		logFile(INFO, "Opción 2 de queryBDMenu seleccionada (showProducts)");
-		showProducts(true);
-		logFile(INFO, "mainMenu<<");
-		mainMenu(true);
+
 		break;
 
 	case 3:
-		logFile(INFO, "Opción 3 de queryBDMenu seleccionada (mainMenu<<)");
-		mainMenu(true);
+
 		break;
 	}
 }
@@ -203,25 +176,19 @@ void adminMenu() {
 
 	switch (opt) {
 	case 1:
-		logFile(INFO, "Opción 1 de adminMenu seleccionada (>>updateBDMenu)");
-		updateBDMenu();
+
 		break;
 
 	case 2:
-		logFile(INFO, "Opción 2 de adminMenu seleccionada (>>queryBDMenu)");
-		queryBDMenu();
+
 		break;
 
 	case 3:
-		logFile(INFO, "Opción 3 de adminMenu seleccionada (showStatistics)");
-		showStatistics();
-		logFile(INFO, "mainMenu<<");
-		mainMenu(true);
+
 		break;
 
 	case 4:
-		logFile(INFO, "Opción 4 de adminMenu seleccionada (mainMenu<<)");
-		mainMenu(true);
+
 		break;
 	}
 }
@@ -245,20 +212,15 @@ void userMenu() {
 
 	switch (opt) {
 	case 1:
-		logFile(INFO, "Opción 1 de userMenu seleccionada (>>queryBDMenu)");
-		queryBDMenu();
+
 		break;
 
 	case 2:
-		logFile(INFO, "Opción 2 de userMenu seleccionada (showStatistics)");
-		showStatistics();
-		logFile(INFO, "mainMenu<<");
-		mainMenu(true);
+
 		break;
 
 	case 3:
-		logFile(INFO, "Opción 3 de userMenu seleccionada (mainMenu<<)");
-		mainMenu(true);
+
 		break;
 	}
 }
@@ -279,17 +241,13 @@ void adminAccessMenu() {
 	sscanf(str, "%i", &pass);
 
 	int propPass;
-	sscanf(properties.propValue[2], "%i", &propPass);
 
 	if (pass == propPass) {
-		logFile(INFO, "Contraseña de administrador correcta (>>adminMenu)");
-		adminMenu();
+
 	} else if (str[0] == 'q') {
-		logFile(INFO, "mainMenu<<");
-		mainMenu(true);
+
 	} else {
-		logFile(INFO, "adminAccessMenu<<");
-		adminAccessMenu();
+
 	}
 
 }
@@ -298,8 +256,6 @@ void adminAccessMenu() {
 void mainMenu(bool b) {
 	int opt;
 	char str[10];
-
-	loadProperties(&properties, "config.prop");
 
 	if (b) {
 		printf("\n------------\n");
@@ -322,17 +278,15 @@ void mainMenu(bool b) {
 
 	switch (opt) {
 	case 1:
-		logFile(INFO, "Opción 1 de mainMenu seleccionada (>>userMenu)");
-		userMenu();
+
 		break;
 
 	case 2:
-		logFile(INFO, "Opción 2 de mainMenu seleccionada (>>adminMenu)");
-		adminAccessMenu();
+
 		break;
 
 	case 3:
-		logFile(END, "Opción 3 de mainMenu seleccionada (ejecución finalizada)");
+
 		exit(0);
 	}
 
@@ -385,7 +339,6 @@ int main(int argc, char *argv[])
 	char c;
 	do
 	{
-		c = menu();
 		if (c == '1')
 		{
 			// SENDING command SUMAR and parameters to the server
@@ -445,10 +398,6 @@ int main(int argc, char *argv[])
 	closesocket(s);
 	WSACleanup();
 
-	return 0;
-}
-
-int main(){
 	return 0;
 }
 
