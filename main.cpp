@@ -10,299 +10,19 @@
 #include <stdlib.h>
 #include <winsock2.h>
 
-#define SERVER_IP "127.0.0.1" // Coger del properties
-#define SERVER_PORT 6000 // Coger del properties
+#define SERVER_IP "127.0.0.1" // Fichero de configuración
+#define SERVER_PORT 6000 // Fichero de configuración
 
-// NIVEL DE MENÚ: 5 (administrador)
-void manageProdMenu() {
-	int opt;
-	char str[10];
-
-	printf("\n-------------------\n");
-	printf("GESTIONAR PRODUCTOS\n");
-	printf("-------------------\n\n");
-	printf("1. Añadir producto\n");
-	printf("2. Eliminar producto\n");
-	printf("3. Actualizar información de un producto\n");
-	printf("4. Volver\n");
-	printf("Introduzca una opción: ");
-	fflush(stdout);
-	fgets(str, 2, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &opt);
-
-	switch (opt) {
-	case 1:
-
-		break;
-
-	case 2:
-
-		break;
-
-	case 3:
-
-		manageProdMenu();
-		break;
-
-	case 4:
-
-		manageProdMenu();
-		break;
-	}
-}
-
-// NIVEL DE MENÚ: 5 (administrador)
-void manageSuperMenu() {
-	int opt;
-	char str[10];
-
-	printf("\n-----------------------\n");
-	printf("GESTIONAR SUPERMERCADOS\n");
-	printf("-----------------------\n\n");
-	printf("1. Añadir supermercado\n");
-	printf("2. Eliminar supermercado\n");
-	printf("3. Actualizar información de un supermercado\n");
-	printf("4. Volver\n");
-	printf("Introduzca una opción: ");
-	fflush(stdout);
-	fgets(str, 2, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &opt);
-
-	switch (opt) {
-	case 1:
-
-		manageSuperMenu();
-		break;
-
-	case 2:
-
-		manageSuperMenu();
-		break;
-
-	case 3:
-
-		manageSuperMenu();
-		break;
-
-	case 4:
-
-		break;
-	}
-}
-
-// NIVEL DE MENÚ: 4
-void updateBDMenu() {
-	int opt;
-	char str[10];
-
-	printf("\n-------------\n");
-	printf("ACTUALIZAR BD\n");
-	printf("-------------\n\n");
-	printf("1. Gestionar supermercados\n");
-	printf("2. Gestionar productos\n");
-	printf("3. Volver\n");
-	printf("Introduzca una opción: ");
-	fflush(stdout);
-	fgets(str, 2, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &opt);
-
-	switch (opt) {
-	case 1:
-
-		break;
-
-	case 2:
-
-		break;
-
-	case 3:
-
-		break;
-	}
-}
-
-// NIVEL DE MENÚ: 3 (usuario) y 4 (administrador)
-void queryBDMenu() {
-	int opt;
-	char str[10];
-
-	printf("\n-----------------\n");
-	printf("CONSULTAS A LA BD\n");
-	printf("-----------------\n\n");
-	printf("1. Visualizar supermercados\n");
-	printf("2. Visualizar productos\n");
-	printf("3. Volver a menú principal\n");
-	printf("Introduzca una opción: ");
-	fflush(stdout);
-	fgets(str, 2, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &opt);
-
-	switch (opt) {
-	case 1:
-
-		break;
-
-	case 2:
-
-		break;
-
-	case 3:
-
-		break;
-	}
-}
-
-// NIVEL DE MENÚ: 3
-void adminMenu() {
-	int opt;
-	char str[10];
-
-	printf("\n------------------\n");
-	printf("MENÚ ADMINISTRADOR\n");
-	printf("------------------\n\n");
-	printf("1. Actualizar BD\n");
-	printf("2. Consultas a la BD\n");
-	printf("3. Estadísticas\n");
-	printf("4. Volver al menú principal\n");
-	printf("Introduzca una opción: ");
-	fflush(stdout);
-	fgets(str, 2, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &opt);
-
-	switch (opt) {
-	case 1:
-
-		break;
-
-	case 2:
-
-		break;
-
-	case 3:
-
-		break;
-
-	case 4:
-
-		break;
-	}
-}
-
-// NIVEL DE MENÚ: 2
-void userMenu() {
-	int opt;
-	char str[10];
-
-	printf("\n------------\n");
-	printf("MENÚ USUARIO\n");
-	printf("------------\n\n");
-	printf("1. Consultas a la BD\n");
-	printf("2. Estadísticas\n");
-	printf("3. Volver al menú principal\n");
-	printf("Introduzca una opción: ");
-	fflush(stdout);
-	fgets(str, 2, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &opt);
-
-	switch (opt) {
-	case 1:
-
-		break;
-
-	case 2:
-
-		break;
-
-	case 3:
-
-		break;
-	}
-}
-
-// NIVEL DE MENÚ: 2
-void adminAccessMenu() {
-	int pass;
-	char str[10];
-
-	printf("\n--------------------\n");
-	printf("ACCESO ADMINISTRADOR\n");
-	printf("--------------------\n\n");
-	printf(
-			"Introduzca la clave (si quiere volver al menú principal pulse 'q' y para continuar pulse ENTER): ");
-	fflush(stdout);
-	fgets(str, 6, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &pass);
-
-	int propPass;
-
-	if (pass == propPass) {
-
-	} else if (str[0] == 'q') {
-
-	} else {
-
-	}
-
-}
-
-// NIVEL DE MENÚ: 1
-void mainMenu(bool b) {
-	int opt;
-	char str[10];
-
-	if (b) {
-		printf("\n------------\n");
-		printf("DEUSTOMARKET\n");
-		printf("------------\n\n");
-	} else {
-		printf("------------\n");
-		printf("DEUSTOMARKET\n");
-		printf("------------\n\n");
-	}
-
-	printf("1. Entrar como usuario\n");
-	printf("2. Entrar como administrador\n");
-	printf("3. Salir\n");
-	printf("Introduzca una opción: ");
-	fflush(stdout);
-	fgets(str, 2, stdin);
-	fflush(stdin);
-	sscanf(str, "%i", &opt);
-
-	switch (opt) {
-	case 1:
-
-		break;
-
-	case 2:
-
-		break;
-
-	case 3:
-
-		exit(0);
-	}
-
-}
-
-int main(int argc, char *argv[])
-{
-
+int main(int argc, char *argv[]) {
 	WSADATA wsaData;
-	SOCKET s;
+	SOCKET conn_socket;
+	SOCKET comm_socket;
 	struct sockaddr_in server;
+	struct sockaddr_in client;
 	char sendBuff[512], recvBuff[512];
 
 	printf("\nInitialising Winsock...\n");
-	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
-	{
+	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
 		printf("Failed. Error Code : %d", WSAGetLastError());
 		return -1;
 	}
@@ -310,8 +30,7 @@ int main(int argc, char *argv[])
 	printf("Initialised.\n");
 
 	//SOCKET creation
-	if ((s = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET)
-	{
+	if ((conn_socket = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) {
 		printf("Could not create socket : %d", WSAGetLastError());
 		WSACleanup();
 		return -1;
@@ -323,82 +42,211 @@ int main(int argc, char *argv[])
 	server.sin_family = AF_INET;
 	server.sin_port = htons(SERVER_PORT);
 
-	//CONNECT to remote server
-	if (connect(s, (struct sockaddr*) &server, sizeof(server)) == SOCKET_ERROR)
-	{
-		printf("Connection error: %d", WSAGetLastError());
-		closesocket(s);
+	//BIND (the IP/port with socket)
+	if (bind(conn_socket, (struct sockaddr*) &server,
+			sizeof(server)) == SOCKET_ERROR) {
+		printf("Bind failed with error code: %d", WSAGetLastError());
+		closesocket(conn_socket);
 		WSACleanup();
 		return -1;
 	}
 
-	printf("Connection stablished with: %s (%d)\n", inet_ntoa(server.sin_addr),
-			ntohs(server.sin_port));
+	printf("Bind done.\n");
+
+	//LISTEN to incoming connections (socket server moves to listening mode)
+	if (listen(conn_socket, 1) == SOCKET_ERROR) {
+		printf("Listen failed with error code: %d", WSAGetLastError());
+		closesocket(conn_socket);
+		WSACleanup();
+		return -1;
+	}
+
+	//ACCEPT incoming connections (server keeps waiting for them)
+	printf("Waiting for incoming connections...\n");
+	int stsize = sizeof(struct sockaddr);
+	comm_socket = accept(conn_socket, (struct sockaddr*) &client, &stsize);
+	// Using comm_socket is able to send/receive data to/from connected client
+	if (comm_socket == INVALID_SOCKET) {
+		printf("accept failed with error code : %d", WSAGetLastError());
+		closesocket(conn_socket);
+		WSACleanup();
+		return -1;
+	}
+	printf("Incomming connection from: %s (%d)\n", inet_ntoa(client.sin_addr),
+			ntohs(client.sin_port));
+
+	// Closing the listening sockets (is not going to be used anymore)
+	closesocket(conn_socket);
 
 	//SEND and RECEIVE data (CLIENT/SERVER PROTOCOL)
-	char c;
-	do
-	{
-		if (c == '1')
-		{
-			// SENDING command SUMAR and parameters to the server
-			strcpy(sendBuff, "SUMAR");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			strcpy(sendBuff, "2");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			strcpy(sendBuff, "3");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			strcpy(sendBuff, "5");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			strcpy(sendBuff, "SUMAR-END");
-			send(s, sendBuff, sizeof(sendBuff), 0);
+	printf("Waiting for incoming commands from client... \n");
+	do {
+		recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 
-			// RECEIVING response to command SUMAR from the server
-			recv(s, recvBuff, sizeof(recvBuff), 0);
-			printf("Suma = %s \n", recvBuff);
+		printf("Command received: %s \n", recvBuff);
+
+		// SHOWSTATS -------------------------------------------------- showStatistics();
+		if (strcmp(recvBuff, "SHOWSTATS") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "SHOWSTATS-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
 		}
 
-		if (c == '2')
-		{
-			// SENDING command RAIZ and parameter to the server
-			strcpy(sendBuff, "RAIZ");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			strcpy(sendBuff, "9");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			strcpy(sendBuff, "RAIZ-END");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-
-			// RECEIVING response to command RAIZ from the server
-			recv(s, recvBuff, sizeof(recvBuff), 0);
-			printf("Raiz cuadrada = %s \n", recvBuff);
+		// SHOWSMKTS -------------------------------------------------- showSupermarkets(true);
+		if (strcmp(recvBuff, "SHOWSMKTS") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "SHOWSMKTS-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
 		}
 
-		if (c == '3')
-		{
-			// SENDING command IP
-			strcpy(sendBuff, "IP");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			strcpy(sendBuff, "IP-END");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-
-			// RECEIVING response to command IP from the server
-			recv(s, recvBuff, sizeof(recvBuff), 0);
-			printf("IP del servidor = %s \n", recvBuff);
+		// SHOWPRODS -------------------------------------------------- showProducts(true);
+		if (strcmp(recvBuff, "SHOWPRODS") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "SHOWPRODS-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
 		}
 
-		if (c == '4')
-		{
-			// SENDING command EXIT
-			strcpy(sendBuff, "EXIT");
-			send(s, sendBuff, sizeof(sendBuff), 0);
+		// ADDSMKT -------------------------------------------------- addSupermarket();
+		if (strcmp(recvBuff, "ADDSMKT") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "ADDSMKT-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
 		}
-	}while(c != '4');
 
-	// CLOSING the socket and cleaning Winsock...
-	closesocket(s);
+		// DELSMKT -------------------------------------------------- deleteSupermarket();
+		if (strcmp(recvBuff, "DELSMKT") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "DELSMKT-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// UDSMKT -------------------------------------------------- updateSupermarket();
+		if (strcmp(recvBuff, "UDSMKT") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "UDSMKT-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// ADDPROD -------------------------------------------------- addProduct();
+		if (strcmp(recvBuff, "ADDPROD") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "ADDPROD-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// DELPROD -------------------------------------------------- deleteProduct();
+		if (strcmp(recvBuff, "DELPROD") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "DELPROD-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// UDPROD -------------------------------------------------- updateProduct();
+		if (strcmp(recvBuff, "UDPROD") == 0) {
+			// Código aquí
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "UDPROD-END") != 0) {
+				int n = atoi(recvBuff);
+				// Código aquí
+				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			}
+			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// Código de muestra
+//		if (strcmp(recvBuff, "RAIZ") == 0) {
+//			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+//			int n = atoi(recvBuff);
+//			float raiz = sqrt(n);
+//
+//			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+//			if (strcmp(recvBuff, "RAIZ-END") == 0)
+//				; // Nada que hacer
+//
+//			sprintf(sendBuff, "%f", raiz);
+//			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+//			printf("Response sent: %s \n", sendBuff);
+//		}
+//
+//		if (strcmp(recvBuff, "IP") == 0) {
+//			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+//			if (strcmp(recvBuff, "IP-END") == 0)
+//				; // Nada que hacer
+//
+//			strcpy(sendBuff, inet_ntoa(server.sin_addr));
+//			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+//			printf("Response sent: %s \n", sendBuff);
+//		}
+
+		// ¿Haría falta un comando EXIT?
+
+//		if (strcmp(recvBuff, "EXIT") == 0)
+//			break;
+
+	} while (1);
+
+	// CLOSING the sockets and cleaning Winsock...
+	closesocket(comm_socket);
 	WSACleanup();
 
 	return 0;
 }
-
 

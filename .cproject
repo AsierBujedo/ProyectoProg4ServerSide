@@ -94,21 +94,33 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="P4Client.cdt.managedbuild.target.gnu.mingw.exe.1525930595" name="Executable" projectType="cdt.managedbuild.target.gnu.mingw.exe"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.541640104;cdt.managedbuild.config.gnu.mingw.exe.release.541640104.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.2110625022;cdt.managedbuild.tool.gnu.cpp.compiler.input.1316563885">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.541640104;cdt.managedbuild.config.gnu.mingw.exe.release.541640104.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.1867206945;cdt.managedbuild.tool.gnu.c.compiler.input.993771363">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.370018016;cdt.managedbuild.config.gnu.mingw.exe.debug.370018016.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1124776178;cdt.managedbuild.tool.gnu.c.compiler.input.207507440">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.370018016;cdt.managedbuild.config.gnu.mingw.exe.debug.370018016.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.1704439685;cdt.managedbuild.tool.gnu.cpp.compiler.input.1276356670">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.370018016;cdt.managedbuild.config.gnu.mingw.exe.debug.370018016.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1124776178;cdt.managedbuild.tool.gnu.c.compiler.input.207507440">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.1111519531;cdt.managedbuild.config.gnu.mingw.exe.release.1111519531.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.842055558;cdt.managedbuild.tool.gnu.cpp.compiler.input.1240191099">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.1111519531;cdt.managedbuild.config.gnu.mingw.exe.release.1111519531.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.435967285;cdt.managedbuild.tool.gnu.c.compiler.input.964471896">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.541640104;cdt.managedbuild.config.gnu.mingw.exe.release.541640104.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.2110625022;cdt.managedbuild.tool.gnu.cpp.compiler.input.1316563885">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1028265899;cdt.managedbuild.config.gnu.mingw.exe.debug.1028265899.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1483710058;cdt.managedbuild.tool.gnu.c.compiler.input.1862586002">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1028265899;cdt.managedbuild.config.gnu.mingw.exe.debug.1028265899.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.1339872312;cdt.managedbuild.tool.gnu.cpp.compiler.input.208566899">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>
