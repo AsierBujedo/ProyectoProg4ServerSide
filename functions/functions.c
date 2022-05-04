@@ -242,7 +242,7 @@ void deleteSupermarket() {
 		fgets(strAux, 2, stdin);
 		fflush(stdin);
 	} else if (opt == 'n') {
-		manageSuperMenu();
+		//manageSuperMenu();------------------------------------------------------------------------------------------------
 	}
 }
 
@@ -408,7 +408,7 @@ void deleteProduct() {
 		fgets(strAux, 2, stdin);
 		fflush(stdin);
 	} else if (opt == 'n') {
-		manageProdMenu();
+		//manageProdMenu();------------------------------------------------------------------------------------------
 	}
 }
 

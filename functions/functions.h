@@ -9,6 +9,7 @@
 #define FUNCTIONS_FUNCTIONS_H_
 #include <stdbool.h>
 
+int prepareSocket();
 void showStatistics();
 void showSupermarkets(bool b);
 void showSupermarketPK();
