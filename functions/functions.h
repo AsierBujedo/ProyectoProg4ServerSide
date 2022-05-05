@@ -7,14 +7,16 @@
 
 #ifndef FUNCTIONS_FUNCTIONS_H_
 #define FUNCTIONS_FUNCTIONS_H_
+#include "../handler/lib/sqlite3.h"
+#include "../handler/DBH.h"
 #include <stdbool.h>
 
 int prepareSocket();
-void showStatistics();
-void showSupermarkets(bool b);
-void showSupermarketPK();
-void showProducts(bool b);
-void showProductPK();
+Data* showStatistics();
+sqlite3_stmt* showSupermarkets(bool b);
+sqlite3_stmt* showSupermarketPK();
+sqlite3_stmt* showProducts(bool b);
+sqlite3_stmt* showProductPK();
 void addSupermarket();
 void deleteSupermarket();
 void updateSupermarket();

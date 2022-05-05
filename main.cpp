@@ -6,10 +6,13 @@
  */
 
 // IMPORTANT: Winsock Library ("ws2_32") should be linked
+#include "functions/functions.h"
+#include "handler/lib/sqlite3.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <winsock2.h>
 
+#define MAX_LINE 40
 #define SERVER_IP "127.0.0.1" // Fichero de configuración
 #define SERVER_PORT 6000 // Fichero de configuración
 
@@ -87,37 +90,70 @@ int main(int argc, char *argv[]) {
 
 		// SHOWSTATS -------------------------------------------------- showStatistics();
 		if (strcmp(recvBuff, "SHOWSTATS") == 0) {
+
 			// Código aquí
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "SHOWSTATS-END") != 0) {
-				int n = atoi(recvBuff);
-				// Código aquí
-				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			}
-//			sprintf(sendBuff, "%d", suma); // Cambiar
+			Data *dataArray = showStatistics();
+			sqlite3_step(dataArray[0].stmt);
+			sqlite3_step(dataArray[1].stmt);
+
+			double stat1 = sqlite3_column_double(dataArray[0].stmt, 0);
+
+			sprintf(sendBuff, "%lf", stat1);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+
+			double stat2 = sqlite3_column_double(dataArray[1].stmt, 0);
+
+			sprintf(sendBuff, "%lf", stat2);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+
 			printf("Response sent: %s \n", sendBuff);
 		}
 
 		// SHOWSMKTS -------------------------------------------------- showSupermarkets(true);
 		if (strcmp(recvBuff, "SHOWSMKTS") == 0) {
+
 			// Código aquí
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "SHOWSMKTS-END") != 0) {
-				int n = atoi(recvBuff);
-				// Código aquí
-				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			}
-			//			sprintf(sendBuff, "%d", suma); // Cambiar
+			showSupermarkets(true);
+
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// SHOWSMKTSPK -------------------------------------------------- showSupermarketPK();
+		if (strcmp(recvBuff, "SHOWSMKTSPK") == 0) {
+
+			// Código aquí
+			showSupermarketPK();
+
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			printf("Response sent: %s \n", sendBuff);
 		}
 
 		// SHOWPRODS -------------------------------------------------- showProducts(true);
 		if (strcmp(recvBuff, "SHOWPRODS") == 0) {
+
+			// Código aquí
+			showProducts(true);
+
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// SHOWPRODSPK -------------------------------------------------- showProductPK();
+		if (strcmp(recvBuff, "SHOWPRODSPK") == 0) {
+
+			// Código aquí
+			showProductPK();
+
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		// ADDSMKTDB -------------------------------------------------- addSupermarketDB();
+		if (strcmp(recvBuff, "ADDSMKTDB") == 0) {
 			// Código aquí
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "SHOWPRODS-END") != 0) {
+			while (strcmp(recvBuff, "ADDSMKTDB-END") != 0) {
 				int n = atoi(recvBuff);
 				// Código aquí
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -127,11 +163,11 @@ int main(int argc, char *argv[]) {
 			printf("Response sent: %s \n", sendBuff);
 		}
 
-		// ADDSMKT -------------------------------------------------- addSupermarket();
-		if (strcmp(recvBuff, "ADDSMKT") == 0) {
+		// DELSMKTDB -------------------------------------------------- deleteSupermarketDB();
+		if (strcmp(recvBuff, "DELSMKTDB") == 0) {
 			// Código aquí
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "ADDSMKT-END") != 0) {
+			while (strcmp(recvBuff, "DELSMKTDB-END") != 0) {
 				int n = atoi(recvBuff);
 				// Código aquí
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -141,11 +177,11 @@ int main(int argc, char *argv[]) {
 			printf("Response sent: %s \n", sendBuff);
 		}
 
-		// DELSMKT -------------------------------------------------- deleteSupermarket();
-		if (strcmp(recvBuff, "DELSMKT") == 0) {
+		// UDSMKTDB -------------------------------------------------- updateSupermarketDB();
+		if (strcmp(recvBuff, "UDSMKTDB") == 0) {
 			// Código aquí
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "DELSMKT-END") != 0) {
+			while (strcmp(recvBuff, "UDSMKTDB-END") != 0) {
 				int n = atoi(recvBuff);
 				// Código aquí
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -155,11 +191,11 @@ int main(int argc, char *argv[]) {
 			printf("Response sent: %s \n", sendBuff);
 		}
 
-		// UDSMKT -------------------------------------------------- updateSupermarket();
-		if (strcmp(recvBuff, "UDSMKT") == 0) {
+		// ADDPRODDB -------------------------------------------------- addProductDB();
+		if (strcmp(recvBuff, "ADDPRODDB") == 0) {
 			// Código aquí
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "UDSMKT-END") != 0) {
+			while (strcmp(recvBuff, "ADDPRODDB-END") != 0) {
 				int n = atoi(recvBuff);
 				// Código aquí
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -169,11 +205,11 @@ int main(int argc, char *argv[]) {
 			printf("Response sent: %s \n", sendBuff);
 		}
 
-		// ADDPROD -------------------------------------------------- addProduct();
-		if (strcmp(recvBuff, "ADDPROD") == 0) {
+		// DELPRODDB -------------------------------------------------- deleteProductDB();
+		if (strcmp(recvBuff, "DELPRODDB") == 0) {
 			// Código aquí
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "ADDPROD-END") != 0) {
+			while (strcmp(recvBuff, "DELPRODDB-END") != 0) {
 				int n = atoi(recvBuff);
 				// Código aquí
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -183,25 +219,11 @@ int main(int argc, char *argv[]) {
 			printf("Response sent: %s \n", sendBuff);
 		}
 
-		// DELPROD -------------------------------------------------- deleteProduct();
-		if (strcmp(recvBuff, "DELPROD") == 0) {
+		// UDPRODDB -------------------------------------------------- updateProductDB();
+		if (strcmp(recvBuff, "UDPRODDB") == 0) {
 			// Código aquí
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "DELPROD-END") != 0) {
-				int n = atoi(recvBuff);
-				// Código aquí
-				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			}
-			//			sprintf(sendBuff, "%d", suma); // Cambiar
-			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
-		}
-
-		// UDPROD -------------------------------------------------- updateProduct();
-		if (strcmp(recvBuff, "UDPROD") == 0) {
-			// Código aquí
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "UDPROD-END") != 0) {
+			while (strcmp(recvBuff, "UDPRODDB-END") != 0) {
 				int n = atoi(recvBuff);
 				// Código aquí
 				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -236,7 +258,7 @@ int main(int argc, char *argv[]) {
 //			printf("Response sent: %s \n", sendBuff);
 //		}
 
-		// ¿Haría falta un comando EXIT?
+// ¿Haría falta un comando EXIT?
 
 //		if (strcmp(recvBuff, "EXIT") == 0)
 //			break;

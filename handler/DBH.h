@@ -5,7 +5,7 @@
  *      Author: asier
  */
 
-#include "lib\sqlite3.h"
+#include "lib/sqlite3.h"
 
 #ifndef DBH_H_
 #define DBH_H_
