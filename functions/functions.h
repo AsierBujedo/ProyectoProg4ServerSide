@@ -5,6 +5,10 @@
  *      Author: Iker López
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef FUNCTIONS_FUNCTIONS_H_
 #define FUNCTIONS_FUNCTIONS_H_
 #include "../handler/lib/sqlite3.h"
@@ -25,3 +29,7 @@ void deleteProduct();
 void updateProduct();
 
 #endif /* FUNCTIONS_FUNCTIONS_H_ */
+
+#ifdef __cplusplus
+}
+#endif
