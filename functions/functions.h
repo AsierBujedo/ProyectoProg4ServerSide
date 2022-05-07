@@ -12,9 +12,11 @@ extern "C" {
 #ifndef FUNCTIONS_FUNCTIONS_H_
 #define FUNCTIONS_FUNCTIONS_H_
 #include "../handler/lib/sqlite3.h"
+#include "../handler/properties/properties.h"
 #include "../handler/DBH.h"
 #include <stdbool.h>
 
+Properties prepareDB();
 int prepareSocket();
 Data* showStatistics();
 sqlite3_stmt* showSupermarkets(bool b);

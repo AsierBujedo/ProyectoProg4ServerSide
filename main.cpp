@@ -9,6 +9,7 @@
 extern "C" {
 #include "functions/functions.h"
 #include "handler/lib/sqlite3.h"
+#include "handler/logger/logger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <winsock2.h>
@@ -19,6 +20,10 @@ extern "C" {
 #define SERVER_PORT 6000 // Fichero de configuración
 
 int main(int argc, char *argv[]) {
+	openLogger("server.log");
+
+	Properties prop = prepareDB();
+
 	WSADATA wsaData;
 	SOCKET conn_socket;
 	SOCKET comm_socket;
@@ -102,12 +107,14 @@ int main(int argc, char *argv[]) {
 			sprintf(sendBuff, "%lf", stat1);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 
+			printf("\nResponse sent for stat1: %s \n", sendBuff);
+
 			// Enviar stat2
 			double stat2 = sqlite3_column_double(dataArray[1].stmt, 0);
 			sprintf(sendBuff, "%lf", stat2);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 
-			printf("Response sent: %s \n", sendBuff);
+			printf("Response sent for stat2: %s \n", sendBuff);
 		}
 
 		// SHOWSMKTS -------------------------------------------------- showSupermarkets();
@@ -163,7 +170,7 @@ int main(int argc, char *argv[]) {
 				sprintf(sendBuff, "%i", cod_s);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}
-
+			send(comm_socket, "END", sizeof("END"), 0);
 			sqlite3_finalize(stmt);
 
 			printf("Response sent: %s \n", sendBuff);
@@ -210,12 +217,15 @@ int main(int argc, char *argv[]) {
 				// Enviar id_prod
 				int id_prod = sqlite3_column_int(stmt, 0);
 				sprintf(sendBuff, "%i", id_prod);
+				printf("%s", sendBuff);
+				logFile(INFO, sendBuff);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("Response sent: %s \n", sendBuff);
 			}
 
 			sqlite3_finalize(stmt);
 
-			printf("Response sent: %s \n", sendBuff);
+			printf("\nEND OF STATEMENT");
 		}
 
 		// ADDSMKTDB -------------------------------------------------- addSupermarketDB(sql, s);
@@ -436,7 +446,8 @@ int main(int argc, char *argv[]) {
 	// CLOSING the sockets and cleaning Winsock...
 	closesocket(comm_socket);
 	WSACleanup();
-
+	closeDB();
+	closeLogger();
 	return 0;
 }
 
