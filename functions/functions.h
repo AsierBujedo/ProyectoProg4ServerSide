@@ -9,12 +9,13 @@
 extern "C" {
 #endif
 
-#ifndef FUNCTIONS_FUNCTIONS_H_
-#define FUNCTIONS_FUNCTIONS_H_
+#include "../handler/DBH.h"
 #include "../handler/lib/sqlite3.h"
 #include "../handler/properties/properties.h"
-#include "../handler/DBH.h"
 #include <stdbool.h>
+
+#ifndef FUNCTIONS_H_
+#define FUNCTIONS_H_
 
 Properties prepareDB();
 int prepareSocket();
@@ -30,7 +31,7 @@ void addProduct();
 void deleteProduct();
 void updateProduct();
 
-#endif /* FUNCTIONS_FUNCTIONS_H_ */
+#endif /* FUNCTIONS_H_ */
 
 #ifdef __cplusplus
 }
