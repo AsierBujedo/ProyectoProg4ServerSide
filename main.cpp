@@ -274,178 +274,140 @@ int main(int argc, char *argv[]) {
 			printf("%i", s.cod_ciu); // Comp.
 
 			addSupermarketDB(sql, s);
-
-//			while (strcmp(recvBuff, "ADDSMKTDB-END") != 0) {
-//				int n = atoi(recvBuff);
-//				// Código aquí
-//				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-//			}
-
-//			printf("Response sent: %s \n", sendBuff);
 		}
 
 		// DELSMKTDB -------------------------------------------------- deleteSupermarketDB(sql, cod_s);
 		if (strcmp(recvBuff, "DELSMKTDB") == 0) {
-			char *sql;
+			char sql[512] = "DELETE FROM SUPERMERCADO WHERE COD_S = ?;";
 			int cod_s;
-
-			// Recibir sql
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", sql);
 
 			// Recibir cod_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%i", &cod_s);
+			printf("%i ", cod_s); // Comp.
 
 			deleteSupermarketDB(sql, cod_s);
-
-//			while (strcmp(recvBuff, "DELSMKTDB-END") != 0) {
-//				int n = atoi(recvBuff);
-//				// Código aquí
-//				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-//			}
-
-//			printf("Response sent: %s \n", sendBuff);
 		}
 
 		// UDSMKTDB -------------------------------------------------- updateSupermarketDB(sql, s);
 		if (strcmp(recvBuff, "UDSMKTDB") == 0) {
-			char *sql;
+			char sql[512] =
+					"UPDATE SUPERMERCADO SET NOM_S = ?, DIR_S = ?, TLF_S = ?, METROS_CUAD_S = ?, COD_CIU = ? WHERE COD_S = ?;";
+			char nom_s[MAX_LINE];
+			char dir_s[MAX_LINE];
 			Supermercado s;
-
-			// Recibir sql
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", sql);
 
 			// Recibir cod_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%i", &s.cod_s);
+			printf("%i ", s.cod_s); // Comp.
 
 			// Recibir nom_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", s.nom_s);
+			sscanf(recvBuff, "%s", nom_s);
+			s.nom_s = nom_s;
+			printf("%s ", s.nom_s); // Comp.
 
 			// Recibir dir_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", s.dir_s);
+			sscanf(recvBuff, "%s", dir_s);
+			s.dir_s = dir_s;
+			printf("%s ", s.dir_s); // Comp.
 
 			// Recibir tlf_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%i", &s.tlf_s);
+			printf("%i ", s.tlf_s); // Comp.
 
 			// Recibir metros_cuad_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%lf", &s.metros_cuad_s);
+			printf("%lf ", s.metros_cuad_s); // Comp.
 
 			// Recibir cod_ciu
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%i", &s.cod_ciu);
+			printf("%i", s.cod_ciu); // Comp.
 
 			updateSupermarketDB(sql, s);
-
-//			while (strcmp(recvBuff, "UDSMKTDB-END") != 0) {
-//				int n = atoi(recvBuff);
-//				// Código aquí
-//				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-//			}
-
-//			printf("Response sent: %s \n", sendBuff);
 		}
 
 		// ADDPRODDB -------------------------------------------------- addProductDB(sql, p);
 		if (strcmp(recvBuff, "ADDPRODDB") == 0) {
-			char *sql;
+			char sql[512] = "INSERT INTO PRODUCTO VALUES (?, ?, ?, ?)";
+			char nom_prod[MAX_LINE];
+			char desc_prod[MAX_LINE];
 			Producto p;
-
-			// Recibir sql
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", sql);
 
 			// Recibir id_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%i", &p.id_prod);
+			printf("%i ", p.id_prod);
 
 			// Recibir nom_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", p.nom_prod);
+			sscanf(recvBuff, "%s", nom_prod);
+			p.nom_prod = nom_prod;
+			printf("%s ", p.nom_prod);
 
 			// Recibir precio_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%lf", &p.precio_prod);
+			printf("%lf ", p.precio_prod);
 
 			// Recibir desc_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", p.desc_prod);
+			sscanf(recvBuff, "%s", desc_prod);
+			p.desc_prod = desc_prod;
+			printf("%s ", p.desc_prod);
 
 			addProductDB(sql, p);
-
-//			while (strcmp(recvBuff, "ADDPRODDB-END") != 0) {
-//				int n = atoi(recvBuff);
-//				// Código aquí
-//				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-//			}
-
-//			printf("Response sent: %s \n", sendBuff);
 		}
 
 		// DELPRODDB -------------------------------------------------- deleteProductDB(sql, id_prod);
 		if (strcmp(recvBuff, "DELPRODDB") == 0) {
-			char *sql;
+			char sql[512] = "DELETE FROM PRODUCTO WHERE ID_PROD = ?;";
 			int id_prod;
-
-			// Recibir sql
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", sql);
 
 			// Recibir id_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%i", &id_prod);
+			printf("%i ", id_prod);
 
 			deleteProductDB(sql, id_prod);
-
-//			while (strcmp(recvBuff, "DELPRODDB-END") != 0) {
-//				int n = atoi(recvBuff);
-//				// Código aquí
-//				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-//			}
-
-//			printf("Response sent: %s \n", sendBuff);
 		}
 
 		// UDPRODDB -------------------------------------------------- updateProductDB(sql, p);
 		if (strcmp(recvBuff, "UDPRODDB") == 0) {
-			char *sql;
+			char sql[512] =
+					"UPDATE PRODUCTO SET NOM_PROD = ?, PRECIO_PROD = ?, DESC_PROD = ? WHERE ID_PROD = ?";
+			char nom_prod[MAX_LINE];
+			char desc_prod[MAX_LINE];
 			Producto p;
-
-			// Recibir sql
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", sql);
 
 			// Recibir id_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%i", &p.id_prod);
+			printf("%i ", p.id_prod);
 
 			// Recibir nom_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", p.nom_prod);
+			sscanf(recvBuff, "%s", nom_prod);
+			p.nom_prod = nom_prod;
+			printf("%s ", p.nom_prod);
 
 			// Recibir precio_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sscanf(recvBuff, "%lf", &p.precio_prod);
+			printf("%lf ", p.precio_prod);
 
 			// Recibir desc_prod
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			sscanf(recvBuff, "%s", p.desc_prod);
+			sscanf(recvBuff, "%s", desc_prod);
+			p.desc_prod = desc_prod;
+			printf("%s ", p.desc_prod);
 
 			updateProductDB(sql, p);
-
-//			while (strcmp(recvBuff, "UDPRODDB-END") != 0) {
-//				int n = atoi(recvBuff);
-//				// Código aquí
-//				recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-//			}
-
-//			printf("Response sent: %s \n", sendBuff);
 		}
 
 // ¿Haría falta un comando EXIT?
