@@ -106,15 +106,13 @@ int main(int argc, char *argv[]) {
 			double stat1 = sqlite3_column_double(dataArray[0].stmt, 0);
 			sprintf(sendBuff, "%lf", stat1);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-
-			printf("\nResponse sent for stat1: %s \n", sendBuff);
+			printf("\nSent: %s\n", sendBuff); // Comp.
 
 			// Enviar stat2
 			double stat2 = sqlite3_column_double(dataArray[1].stmt, 0);
 			sprintf(sendBuff, "%lf", stat2);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-
-			printf("Response sent for stat2: %s \n", sendBuff);
+			printf("Sent: %s\n", sendBuff); // Comp.
 		}
 
 		// SHOWSMKTS -------------------------------------------------- showSupermarkets();
@@ -127,43 +125,42 @@ int main(int argc, char *argv[]) {
 				int cod_s = sqlite3_column_int(stmt, 0);
 				sprintf(sendBuff, "%i", cod_s);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("\nSent: %s ", sendBuff); // Comp.
 
 				// Enviar nom_s
 				char *nom_s = (char*) sqlite3_column_text(stmt, 1);
 				sprintf(sendBuff, "%s", nom_s);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("%s ", sendBuff); // Comp.
 
 				// Enviar dir_s
 				char *dir_s = (char*) sqlite3_column_text(stmt, 2);
 				sprintf(sendBuff, "%s", dir_s);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("%s ", sendBuff); // Comp.
 
 				// Enviar tlf_s
 				int tlf_s = sqlite3_column_int(stmt, 3);
 				sprintf(sendBuff, "%i", tlf_s);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("%s ", sendBuff); // Comp.
 
 				// Enviar metros_cuad_s
 				double metros_cuad_s = sqlite3_column_double(stmt, 4);
 				sprintf(sendBuff, "%lf", metros_cuad_s);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("%s ", sendBuff); // Comp.
 
 				// Enviar cod_ciu
 				int cod_ciu = sqlite3_column_int(stmt, 5);
 				sprintf(sendBuff, "%i", cod_ciu);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s \n", sendBuff);
+				printf("%s\n", sendBuff); // Comp.
 			}
 
-			send(comm_socket, "END", sizeof("END"), 0);
 			sqlite3_finalize(stmt);
 
-			printf("Response sent: %s \n", sendBuff);
+			send(comm_socket, "END", sizeof("END"), 0);
 		}
 
 		// SHOWSMKTSPK -------------------------------------------------- showSupermarketPK();
@@ -175,12 +172,12 @@ int main(int argc, char *argv[]) {
 				int cod_s = sqlite3_column_int(stmt, 0);
 				sprintf(sendBuff, "%i", cod_s);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("Sending: %s\n", sendBuff);
+				printf("\nSent: %s\n", sendBuff); // Comp.
 			}
-			send(comm_socket, "END", sizeof("END"), 0);
+
 			sqlite3_finalize(stmt);
 
-			printf("Response sent: %s \n", sendBuff);
+			send(comm_socket, "END", sizeof("END"), 0);
 		}
 
 		// SHOWPRODS -------------------------------------------------- showProducts();
@@ -193,30 +190,30 @@ int main(int argc, char *argv[]) {
 				int id_prod = sqlite3_column_int(stmt, 0);
 				sprintf(sendBuff, "%i", id_prod);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("\nSent: %s ", sendBuff); // Comp.
 
 				// Enviar nom_prod
 				char *nom_prod = (char*) sqlite3_column_text(stmt, 1);
 				sprintf(sendBuff, "%s", nom_prod);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("%s ", sendBuff); // Comp.
 
 				// Enviar precio_prod
 				double precio_prod = sqlite3_column_double(stmt, 2);
 				sprintf(sendBuff, "%lf", precio_prod);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s ", sendBuff);
+				printf("%s ", sendBuff); // Comp.
 
 				// Enviar desc_prod
 				char *desc_prod = (char*) sqlite3_column_text(stmt, 3);
 				sprintf(sendBuff, "%s", desc_prod);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("%s \n", sendBuff);
+				printf("%s\n", sendBuff); // Comp.
 			}
-			send(comm_socket, "END", sizeof("END"), 0);
+
 			sqlite3_finalize(stmt);
 
-			printf("Response sent: %s \n", sendBuff);
+			send(comm_socket, "END", sizeof("END"), 0);
 		}
 
 		// SHOWPRODSPK -------------------------------------------------- showProductPK();
@@ -227,15 +224,13 @@ int main(int argc, char *argv[]) {
 				// Enviar id_prod
 				int id_prod = sqlite3_column_int(stmt, 0);
 				sprintf(sendBuff, "%i", id_prod);
-				printf("%s\n", sendBuff);
-				logFile(INFO, sendBuff);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("Response sent: %s \n", sendBuff);
+				printf("\nSent: %s\n", sendBuff); // Comp.
 			}
-			send(comm_socket, "END", sizeof("END"), 0);
+
 			sqlite3_finalize(stmt);
 
-			printf("\nEND OF STATEMENT");
+			send(comm_socket, "END", sizeof("END"), 0);
 		}
 
 		// ADDSMKTDB -------------------------------------------------- addSupermarketDB(sql, s);
@@ -247,45 +242,43 @@ int main(int argc, char *argv[]) {
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			//sscanf(recvBuff, "%s", sql);
 			strcpy(sql, recvBuff);
-			printf("%s \n", sql);
-
-			printf("Received: \n");
+			printf("\n%s\n", sql); // Comp.
 
 			// Recibir cod_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			s.cod_s = atoi(recvBuff);
 			//sscanf(recvBuff, "%i", &s.cod_s);
-			printf("%i ", s.cod_s);
+			printf("%i ", s.cod_s); // Comp.
 
 			// Recibir nom_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			//sscanf(recvBuff, "%s", s.nom_s);
 			strcpy(s.nom_s, recvBuff);
-			printf("%s ", s.nom_s);
+			printf("%s ", s.nom_s); // Comp.
 
 			// Recibir dir_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			//sscanf(recvBuff, "%s", s.dir_s);
 			strcpy(s.nom_s, recvBuff);
-			printf("%s ", s.dir_s);
+			printf("%s ", s.dir_s); // Comp.
 
 			// Recibir tlf_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			s.tlf_s = atoi(recvBuff);
 			//sscanf(recvBuff, "%i", &s.tlf_s);
-			printf("%i ", s.tlf_s);
+			printf("%i ", s.tlf_s); // Comp.
 
 			// Recibir metros_cuad_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			s.metros_cuad_s = atof(recvBuff);
 			//sscanf(recvBuff, "%lf", &s.metros_cuad_s);
-			printf("%lf ", s.metros_cuad_s);
+			printf("%lf ", s.metros_cuad_s); // Comp.
 
 			// Recibir cod_ciu
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			s.cod_ciu = atoi(recvBuff);
 			//sscanf(recvBuff, "%i", &s.cod_ciu);
-			printf("%i ", s.cod_ciu);
+			printf("%i", s.cod_ciu); // Comp.
 
 			addSupermarketDB(sql, s);
 
