@@ -235,49 +235,42 @@ int main(int argc, char *argv[]) {
 
 		// ADDSMKTDB -------------------------------------------------- addSupermarketDB(sql, s);
 		if (strcmp(recvBuff, "ADDSMKTDB") == 0) {
-			char *sql;
+			char sql[512] =
+					"INSERT INTO SUPERMERCADO VALUES (?, ?, ?, ?, ?, ?);";
+			char nom_s[MAX_LINE];
+			char dir_s[MAX_LINE];
 			Supermercado s;
-
-			// Recibir sql
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			//sscanf(recvBuff, "%s", sql);
-			strcpy(sql, recvBuff);
-			printf("\n%s\n", sql); // Comp.
 
 			// Recibir cod_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			s.cod_s = atoi(recvBuff);
-			//sscanf(recvBuff, "%i", &s.cod_s);
+			sscanf(recvBuff, "%i", &s.cod_s);
 			printf("%i ", s.cod_s); // Comp.
 
 			// Recibir nom_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			//sscanf(recvBuff, "%s", s.nom_s);
-			strcpy(s.nom_s, recvBuff);
+			sscanf(recvBuff, "%s", nom_s);
+			s.nom_s = nom_s;
 			printf("%s ", s.nom_s); // Comp.
 
 			// Recibir dir_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			//sscanf(recvBuff, "%s", s.dir_s);
-			strcpy(s.nom_s, recvBuff);
+			sscanf(recvBuff, "%s", dir_s);
+			s.dir_s = dir_s;
 			printf("%s ", s.dir_s); // Comp.
 
 			// Recibir tlf_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			s.tlf_s = atoi(recvBuff);
-			//sscanf(recvBuff, "%i", &s.tlf_s);
+			sscanf(recvBuff, "%i", &s.tlf_s);
 			printf("%i ", s.tlf_s); // Comp.
 
 			// Recibir metros_cuad_s
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			s.metros_cuad_s = atof(recvBuff);
-			//sscanf(recvBuff, "%lf", &s.metros_cuad_s);
+			sscanf(recvBuff, "%lf", &s.metros_cuad_s);
 			printf("%lf ", s.metros_cuad_s); // Comp.
 
 			// Recibir cod_ciu
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			s.cod_ciu = atoi(recvBuff);
-			//sscanf(recvBuff, "%i", &s.cod_ciu);
+			sscanf(recvBuff, "%i", &s.cod_ciu);
 			printf("%i", s.cod_ciu); // Comp.
 
 			addSupermarketDB(sql, s);
