@@ -5,11 +5,13 @@
  *      Author: asier
  */
 
-#include"DBH.h"
-#include "logger\logger.h"
+#include "DBH.h"
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+#include "Logger/logger.h"
 
 #define MAX 1000
 

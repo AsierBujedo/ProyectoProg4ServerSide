@@ -6,11 +6,12 @@
  */
 
 #include "functions.h"
-#include "../handler/DBH.h"
-#include "../handler/logger/logger.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../Handler/DBH.h"
+#include "../Handler/Logger/logger.h"
 
 #define MAX_LINE 40
 

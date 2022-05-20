@@ -6,12 +6,12 @@
  */
 
 // IMPORTANT: Winsock Library ("ws2_32") should be linked
-#include "functions/functions.h"
-#include "handler/lib/sqlite3.h"
-#include "handler/logger/logger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <winsock2.h>
+#include "Functions/functions.h"
+#include "Handler/Lib/sqlite3.h"
+#include "Handler/Logger/logger.h"
 
 #define MAX_LINE 40
 char *SERVER_IP;

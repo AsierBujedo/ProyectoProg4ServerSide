@@ -5,11 +5,13 @@
  *      Author: asier
  */
 
-#include"logger.h"
-#include "../properties/properties.h"
+#include "logger.h"
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+#include "../Properties/properties.h"
 
 static FILE *f;
 

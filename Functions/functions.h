@@ -9,9 +9,9 @@
 extern "C" {
 #endif
 
-#include "../handler/DBH.h"
-#include "../handler/lib/sqlite3.h"
-#include "../handler/properties/properties.h"
+#include "../Handler/DBH.h"
+#include "../Handler/Lib/sqlite3.h"
+#include "../Handler/Properties/properties.h"
 #include <stdbool.h>
 
 #ifndef FUNCTIONS_H_
