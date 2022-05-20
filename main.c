@@ -6,23 +6,25 @@
  */
 
 // IMPORTANT: Winsock Library ("ws2_32") should be linked
-extern "C" {
 #include "functions/functions.h"
 #include "handler/lib/sqlite3.h"
 #include "handler/logger/logger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <winsock2.h>
-}
 
 #define MAX_LINE 40
-#define SERVER_IP "127.0.0.1" // Fichero de configuración
-#define SERVER_PORT 6000 // Fichero de configuración
+char *SERVER_IP;
+int SERVER_PORT;
 
 int main(int argc, char *argv[]) {
 	openLogger("server.log");
 
 	Properties prop = prepareDB();
+
+	SERVER_IP = prop.propValue[0];
+	char *SERVER_PORT_AUX = prop.propValue[1];
+	SERVER_PORT = atoi(SERVER_PORT_AUX);
 
 	WSADATA wsaData;
 	SOCKET conn_socket;
@@ -409,11 +411,6 @@ int main(int argc, char *argv[]) {
 
 			updateProductDB(sql, p);
 		}
-
-// ¿Haría falta un comando EXIT?
-
-//		if (strcmp(recvBuff, "EXIT") == 0)
-//			break;
 
 	} while (1);
 
