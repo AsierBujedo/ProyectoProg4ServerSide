@@ -131,7 +131,7 @@ Properties prepareDB() {
 	return prop;
 }
 
-Data* showStatistics() { // HECHO
+Data* showStatistics() {
 	Data datos1;
 	Data datos2;
 

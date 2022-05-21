@@ -17,8 +17,8 @@ void createProperties(Properties *properties, char name[]) {
 	FILE *f = fopen(name, "w");
 
 	for (int i = 0; i < properties->numProp; i++) {
-		fprintf(f, "-%s\n", properties->propName[i]); //NOMBRE DE LA PROPIEDAD
-		fprintf(f, "%s\n", properties->propValue[i]); //VALOR DE LA PROPIEDAD
+		fprintf(f, "-%s\n", properties->propName[i]);
+		fprintf(f, "%s\n", properties->propValue[i]);
 	}
 	logFile(INFO, "Fichero de configuración creado");
 	fclose(f);
@@ -29,8 +29,8 @@ void allocate(Properties *prop, char name[]) {
 	FILE *f = fopen(name, "r");
 
 	char buffer[MAX];
-	char** nombres = malloc(sizeof(char*) * prop->numProp);
-	char** valores = malloc(sizeof(char*) * prop->numProp);
+	char **nombres = malloc(sizeof(char*) * prop->numProp);
+	char **valores = malloc(sizeof(char*) * prop->numProp);
 	int props = prop->numProp;
 	int posEnValue = 0;
 	int posEnName = 0;
@@ -39,13 +39,13 @@ void allocate(Properties *prop, char name[]) {
 		if (buffer[0] == '-') {
 			if (posEnName < props) {
 				buffer[0] = ' ';
-				nombres[posEnName] = malloc(sizeof(char)*MAX);
+				nombres[posEnName] = malloc(sizeof(char) * MAX);
 				strcpy(nombres[posEnName], buffer);
 				posEnName++;
 			}
 		} else if (buffer[0] != '-') {
 			if (posEnValue < props) {
-				valores[posEnValue] = malloc(sizeof(char)*MAX);
+				valores[posEnValue] = malloc(sizeof(char) * MAX);
 				strcpy(valores[posEnValue], buffer);
 				posEnValue++;
 			}
@@ -75,6 +75,5 @@ void loadProperties(Properties *properties, char name[]) {
 	fclose(f);
 
 	allocate(properties, name);
-
 
 }

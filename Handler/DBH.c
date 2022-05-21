@@ -6,11 +6,10 @@
  */
 
 #include "DBH.h"
+#include "Logger/logger.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
-#include "Logger/logger.h"
 
 #define MAX 1000
 
@@ -58,14 +57,6 @@ Data executeQuery(char sql[]) {
 		rows++;
 	}
 	sqlite3_reset(stmt);
-
-//	for (int i = 0; i <= rows - 1; i++) {
-//		sqlite3_step(stmt);
-//		for (int j = 0; j <= cols - 1; j++) {
-//			printf("Cols: %i, Rows %i Text: %s\n", j, i,
-//					sqlite3_column_text(stmt, j));
-//		}
-//	}
 
 	Data content;
 	content.rows = rows;

@@ -10,11 +10,11 @@
 
 typedef struct {
 	int numProp;
-	char** propName;
-	char** propValue;
+	char **propName;
+	char **propValue;
 } Properties;
 
-void loadProperties(Properties* properties, char name[]);
-void createProperties(Properties* properties, char name[]);
+void loadProperties(Properties *properties, char name[]);
+void createProperties(Properties *properties, char name[]);
 
 #endif /* PROPERTIES_H_ */
