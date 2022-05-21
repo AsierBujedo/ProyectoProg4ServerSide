@@ -6,12 +6,12 @@
  */
 
 // IMPORTANT: Winsock Library ("ws2_32") should be linked
-#include <stdio.h>
-#include <stdlib.h>
-#include <winsock2.h>
 #include "Functions/functions.h"
 #include "Handler/Lib/sqlite3.h"
 #include "Handler/Logger/logger.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <winsock2.h>
 
 #define MAX_LINE 40
 char *SERVER_IP;
@@ -228,6 +228,60 @@ int main(int argc, char *argv[]) {
 				sprintf(sendBuff, "%i", id_prod);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 				printf("\nSent: %s\n", sendBuff); // Comp.
+			}
+
+			sqlite3_finalize(stmt);
+
+			send(comm_socket, "END", sizeof("END"), 0);
+		}
+
+		// SHOWPROVS -------------------------------------------------- showProvinces();
+		if (strcmp(recvBuff, "SHOWPROVS") == 0) {
+			sqlite3_stmt *stmt = showProvinces(true);
+
+			while (sqlite3_step(stmt) == SQLITE_ROW) {
+
+				// Enviar cod_prov
+				int cod_prov = sqlite3_column_int(stmt, 0);
+				sprintf(sendBuff, "%i", cod_prov);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("\nSent: %s ", sendBuff); // Comp.
+
+				// Enviar nom_prov
+				char *nom_prov = (char*) sqlite3_column_text(stmt, 1);
+				sprintf(sendBuff, "%s", nom_prov);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("%s\n", sendBuff); // Comp.
+			}
+
+			sqlite3_finalize(stmt);
+
+			send(comm_socket, "END", sizeof("END"), 0);
+		}
+
+		// SHOWCITIES -------------------------------------------------- showCities();
+		if (strcmp(recvBuff, "SHOWCITIES") == 0) {
+			sqlite3_stmt *stmt = showCities(true);
+
+			while (sqlite3_step(stmt) == SQLITE_ROW) {
+
+				// Enviar cod_ciu
+				int cod_ciu = sqlite3_column_int(stmt, 0);
+				sprintf(sendBuff, "%i", cod_ciu);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("\nSent: %s ", sendBuff); // Comp.
+
+				// Enviar nom_ciu
+				char *nom_ciu = (char*) sqlite3_column_text(stmt, 1);
+				sprintf(sendBuff, "%s", nom_ciu);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("%s ", sendBuff); // Comp.
+
+				// Enviar cod_prov
+				int cod_prov = sqlite3_column_int(stmt, 2);
+				sprintf(sendBuff, "%i", cod_prov);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("%s\n", sendBuff); // Comp.
 			}
 
 			sqlite3_finalize(stmt);

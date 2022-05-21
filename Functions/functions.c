@@ -6,12 +6,11 @@
  */
 
 #include "functions.h"
-
+#include "../Handler/DBH.h"
+#include "../Handler/Logger/logger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../Handler/DBH.h"
-#include "../Handler/Logger/logger.h"
 
 #define MAX_LINE 40
 
@@ -177,6 +176,22 @@ sqlite3_stmt* showProductPK() {
 	Data datos = executeQuery(sql);
 
 	printf("%i", sqlite3_column_int(datos.stmt, 0));
+
+	return datos.stmt;
+}
+
+sqlite3_stmt* showProvinces(bool b) {
+	char *sql = "SELECT * FROM PROVINCIA;";
+
+	Data datos = executeQuery(sql);
+
+	return datos.stmt;
+}
+
+sqlite3_stmt* showCities(bool b) {
+	char *sql = "SELECT * FROM CIUDAD;";
+
+	Data datos = executeQuery(sql);
 
 	return datos.stmt;
 }

@@ -6,12 +6,10 @@
  */
 
 #include "logger.h"
-
+#include "../Properties/properties.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
-#include "../Properties/properties.h"
 
 static FILE *f;
 
